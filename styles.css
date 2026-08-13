@@ -1,7 +1,7 @@
 /* ============================================================
    Goldilocks Locksmiths — Wilson Innovations demo (Tier 1)
    Palette: brass gold + deep navy + warm-key amber on warm ivory.
-   Fonts: Bonheur Royale (script accent) + Ysabeau SC (small-caps body/heads).
+   Fonts: Literata (elegant serif display/heads + italic accents) + Figtree (body/UI).
    Self-contained, runs from file:// — no build tools.
    ============================================================ */
 
@@ -33,12 +33,12 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family:"Ysabeau SC",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   color:var(--ink);
   background:var(--cream);
   line-height:1.65;
-  font-weight:500;
-  letter-spacing:.006em;
+  font-weight:450;
+  letter-spacing:normal;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
@@ -47,22 +47,22 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit}
 
 h1,h2,h3,h4{
-  font-family:"Ysabeau SC","Ysabeau SC",Georgia,serif;
-  line-height:1.05;
-  letter-spacing:-.005em;
+  font-family:"Literata",Georgia,serif;
+  line-height:1.08;
+  letter-spacing:-.012em;
   margin:0;
-  font-weight:800;
+  font-weight:700;
   color:var(--navy);
   text-wrap:balance;
 }
-h1{font-size:clamp(2.5rem,5.1vw,4rem);letter-spacing:-.01em;line-height:1.06}
-h2{font-size:clamp(2.05rem,4.4vw,3.35rem);letter-spacing:-.008em}
-h3{font-size:1.42rem;line-height:1.14}
+h1{font-size:clamp(2.4rem,5vw,3.85rem);letter-spacing:-.02em;line-height:1.08;font-weight:800}
+h2{font-size:clamp(2rem,4.3vw,3.25rem);letter-spacing:-.016em}
+h3{font-size:1.4rem;line-height:1.18}
 h4{font-size:1.08rem}
 p{margin:0;text-wrap:pretty}
 
-/* Script accent — used sparingly for the brand + a single hero flourish word */
-.script{font-family:"Bonheur Royale",cursive;font-weight:400;letter-spacing:.01em;line-height:1}
+/* Italic serif accent — replaces the old script; used sparingly for the wordmark + a single hero flourish word */
+.script{font-family:"Literata",Georgia,serif;font-style:italic;font-weight:500;letter-spacing:0;line-height:1.05}
 
 html,body{overflow-x:clip}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,44px)}
@@ -87,7 +87,7 @@ section{padding:clamp(60px,8.5vw,116px) 0}
 .btn{
   position:relative;overflow:hidden;
   display:inline-flex;align-items:center;justify-content:center;gap:.55em;
-  font-family:"Ysabeau SC",sans-serif;font-weight:800;font-size:1.02rem;letter-spacing:.03em;
+  font-family:"Figtree",sans-serif;font-weight:700;font-size:1.02rem;letter-spacing:.03em;
   text-transform:uppercase;
   padding:.9em 1.6em;border-radius:999px;border:2px solid transparent;cursor:pointer;
   transition:transform .22s var(--ease),box-shadow .22s var(--ease),background .22s var(--ease),color .22s var(--ease),border-color .22s var(--ease);
@@ -132,8 +132,8 @@ section{padding:clamp(60px,8.5vw,116px) 0}
 .brand-mark svg{width:26px;height:26px;color:#fff}
 .brand-text{display:flex;flex-direction:column;line-height:.9}
 .brand-name{display:flex;align-items:baseline;gap:.28em}
-.brand-name .g{font-family:"Bonheur Royale",cursive;font-weight:400;font-size:2.05rem;color:var(--brass-dark);line-height:.8}
-.brand-name .l{font-weight:800;font-size:1.02rem;letter-spacing:.18em;color:var(--navy);text-transform:uppercase}
+.brand-name .g{font-family:"Literata",Georgia,serif;font-style:italic;font-weight:600;font-size:1.5rem;color:var(--brass-dark);line-height:1}
+.brand-name .l{font-weight:700;font-size:1rem;letter-spacing:.17em;color:var(--navy);text-transform:uppercase}
 .brand-tag{font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:5px}
 
 .main-nav{display:flex;align-items:center;gap:4px}
@@ -156,10 +156,19 @@ section{padding:clamp(60px,8.5vw,116px) 0}
   .brand{gap:9px}
   .brand-mark{width:40px;height:40px}
   .brand-mark svg{width:22px;height:22px}
-  .brand-name .g{font-size:1.7rem}
-  .brand-name .l{font-size:.86rem;letter-spacing:.14em}
+  .brand-name .g{font-size:1.3rem}
+  .brand-name .l{font-size:.84rem;letter-spacing:.13em}
   .brand-tag{font-size:.54rem;letter-spacing:.16em}
   .nav-toggle{width:42px;height:42px;flex:none}
+}
+/* Mobile header standard: call CTA collapses to icon-only so brand + call + menu all fit flush */
+@media(max-width:600px){
+  .header-cta .btn-phone .btn-txt{display:none}
+  .header-cta .btn-phone{width:46px;height:46px;padding:0;border-radius:12px;flex:none}
+  .header-cta .btn-phone svg{width:22px;height:22px}
+}
+@media(max-width:480px){
+  .header-cta .btn-phone{width:42px;height:42px}
 }
 
 /* Mobile nav drawer */
@@ -168,7 +177,7 @@ section{padding:clamp(60px,8.5vw,116px) 0}
 .mobile-nav-panel{position:absolute;top:0;right:0;height:100%;width:min(340px,86vw);background:var(--cream-2);box-shadow:var(--shadow-lg);padding:24px;display:flex;flex-direction:column;gap:6px;transform:translateX(100%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
 .mobile-nav.open .mobile-nav-panel{transform:none}
 .mobile-nav-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.mobile-nav-head .g{font-family:"Bonheur Royale",cursive;font-size:1.9rem;color:var(--brass-dark);line-height:.8}
+.mobile-nav-head .g{font-family:"Literata",Georgia,serif;font-style:italic;font-weight:600;font-size:1.4rem;color:var(--brass-dark);line-height:1}
 .mobile-nav a.mn-link{padding:.85em 1em;border-radius:12px;font-weight:800;font-size:1.14rem;letter-spacing:.05em;text-transform:uppercase;color:var(--navy)}
 .mobile-nav a.mn-link:hover{background:var(--cream);color:var(--brass-dark)}
 .mobile-nav .mn-close{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center}
@@ -186,8 +195,8 @@ section{padding:clamp(60px,8.5vw,116px) 0}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(102deg,rgba(8,16,30,.94) 0%,rgba(10,22,42,.82) 44%,rgba(10,22,42,.32) 100%)}
 .hero-inner{position:relative;z-index:2;width:100%;padding-top:clamp(26px,4vw,44px);padding-bottom:clamp(34px,4.5vw,56px)}
 .hero .eyebrow{margin-bottom:14px}
-.hero h1{color:#fff;max-width:20ch;font-size:clamp(2.5rem,4.6vw,3.9rem);line-height:1.07;letter-spacing:-.01em}
-.hero h1 .script{display:inline-block;font-size:1.18em;color:var(--amber);letter-spacing:.01em;padding:0 .04em}
+.hero h1{color:#fff;max-width:20ch;font-size:clamp(2.4rem,4.6vw,3.85rem);line-height:1.09;letter-spacing:-.02em}
+.hero h1 .script{font-size:1.04em;color:var(--amber);letter-spacing:-.01em;padding:0 .02em}
 .hero-sub{margin-top:18px;font-size:clamp(1.06rem,1.65vw,1.24rem);color:#dbe3f0;max-width:52ch;line-height:1.55;font-weight:500}
 .hero-cta{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap}
 .hero-badges{
@@ -304,7 +313,7 @@ section{padding:clamp(60px,8.5vw,116px) 0}
 @media(max-width:900px){.reviews-grid{grid-template-columns:1fr}}
 .review-card{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.13);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(2px);box-shadow:0 24px 48px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .35s var(--ease),border-color .35s var(--ease),background .35s var(--ease)}
 .review-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.26);background:linear-gradient(160deg,rgba(255,255,255,.13),rgba(255,255,255,.05))}
-.review-card::before{content:"\201C";position:absolute;top:2px;right:20px;font-family:"Bonheur Royale",cursive;font-size:4.6rem;line-height:1;color:var(--brass-soft);opacity:.32;pointer-events:none}
+.review-card::before{content:"\201C";position:absolute;top:10px;right:22px;font-family:"Literata",Georgia,serif;font-style:italic;font-weight:700;font-size:4rem;line-height:1;color:var(--brass-soft);opacity:.3;pointer-events:none}
 .review-stars{color:var(--amber);letter-spacing:.08em;font-size:1.05rem;position:relative}
 .review-text{color:#e9edf6;font-size:1.02rem;line-height:1.6;flex:1;font-weight:500}
 .review-who{display:flex;align-items:center;gap:12px;margin-top:2px}
